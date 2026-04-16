@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=JetBrains+Mono:wght@400;700&family=Outfit:wght@900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-neon-emerald: var(--neon-emerald);
+  --color-neon-cyan: var(--neon-cyan);
+  --color-neon-violet: var(--neon-violet);
+  --color-dark-bg: var(--bg-primary);
+  --color-dark-card: var(--bg-secondary);
+  --color-primary: var(--text-primary);
+  --color-secondary: var(--text-secondary);
+  --color-border-main: var(--border-primary);
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display: "Outfit", sans-serif;
+}
+
+:root {
+  --neon-emerald: #10b981;
+  --neon-cyan: #06b6d4;
+  --neon-violet: #8b5cf6;
+  --bg-primary: #050505;
+  --bg-secondary: #0a0a0a;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.6);
+  --border-primary: rgba(255, 255, 255, 0.1);
+  --highlight: #10b981;
+}
+
+.theme-dark-minimal {
+  --neon-emerald: #94a3b8;
+  --neon-cyan: #64748b;
+  --neon-violet: #475569;
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --border-primary: rgba(148, 163, 184, 0.1);
+  --highlight: #64748b;
+}
+
+.theme-light {
+  --neon-emerald: #059669;
+  --neon-cyan: #0891b2;
+  --neon-violet: #7c3aed;
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --border-primary: rgba(15, 23, 42, 0.1);
+  --highlight: #0f172a;
+}
+
+@layer base {
+  body {
+    @apply bg-dark-bg text-[var(--text-primary)] font-sans antialiased selection:bg-neon-emerald selection:text-black transition-colors duration-300;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-white/20 rounded-full hover:bg-neon-emerald transition-colors;
+  }
+}
+
+/* Brutalist Utilities */
+.brutal-border {
+  border-width: 2px;
+  border-color: var(--border-primary);
+  @apply transition-all duration-300;
+}
+
+.brutal-border:hover {
+  border-color: var(--neon-emerald);
+}
+
+.brutal-shadow {
+  box-shadow: 8px 8px 0px rgba(16, 185, 129, 0.2);
+}
+
+.brutal-shadow:hover {
+  box-shadow: 4px 4px 0px rgba(16, 185, 129, 0.4);
+  transform: translate(2px, 2px);
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.glitch-text {
+  position: relative;
+  text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+    -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+    0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+  animation: glitch 500ms infinite;
+}
+
+@keyframes glitch {
+  0% { text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75), -0.05em -0.025em 0 rgba(0, 255, 0, 0.75), -0.025em 0.05em 0 rgba(0, 0, 255, 0.75); }
+  14% { text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75), -0.05em -0.025em 0 rgba(0, 255, 0, 0.75), -0.025em 0.05em 0 rgba(0, 0, 255, 0.75); }
+  15% { text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75), 0.025em 0.025em 0 rgba(0, 255, 0, 0.75), -0.05em -0.05em 0 rgba(0, 0, 255, 0.75); }
+  49% { text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75), 0.025em 0.025em 0 rgba(0, 255, 0, 0.75), -0.05em -0.05em 0 rgba(0, 0, 255, 0.75); }
+  50% { text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75), 0.05em 0 0 rgba(0, 255, 0, 0.75), 0 -0.05em 0 rgba(0, 0, 255, 0.75); }
+  99% { text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75), 0.05em 0 0 rgba(0, 255, 0, 0.75), 0 -0.05em 0 rgba(0, 0, 255, 0.75); }
+  100% { text-shadow: -0.025em 0 0 rgba(255, 0, 0, 0.75), -0.025em -0.025em 0 rgba(0, 255, 0, 0.75), -0.025em -0.05em 0 rgba(0, 0, 255, 0.75); }
+}
+
+.tech-noir-gradient {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(6, 182, 212, 0.05) 100%);
+}
+
+.glass-morphism {
+  background-color: var(--bg-secondary);
+  @apply backdrop-blur-2xl;
+  border-color: var(--border-primary);
+  border-width: 1px;
+}
+

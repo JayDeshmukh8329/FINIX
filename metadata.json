@@ -1,0 +1,5 @@
+{
+  "name": "Finix",
+  "description": "A high-performance, Tech-Noir e-commerce platform with AI-driven personalization and voice-to-shop capabilities.",
+  "requestFramePermissions": ["microphone"]
+}
